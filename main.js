@@ -58,11 +58,11 @@ console.log('end of the last word:',testSample.test('heysdfsdfs dfsdfgshey'));//
 //Check for beginning and ending differently
 const reDiffBegEnd = /^hello.*world$/;
 console.log('/^string$/');
-console.log('same text:',reDiffBegEnd.test('helloworld'));                //t
-console.log('mid of the string merged:',reDiffBegEnd.test('helloasdasdasdfsdfsworld'));  //f
-console.log('mid of the string merged:',reDiffBegEnd.test('hello world'));  //f
+console.log('same text without space:',reDiffBegEnd.test('helloworld'));                //t
+console.log('outside of another text merged:',reDiffBegEnd.test('helloasdasdasdfsdfsworld'));  //f
+console.log('same text with space:',reDiffBegEnd.test('hello world'));  //f
 console.log('end of the first word:',reDiffBegEnd.test('asdasdahello world sdfsdfs'));//f
-console.log('mid of the string alone:',reDiffBegEnd.test('helloworldasdasda hey sdfsdfs'));//f
-console.log('beginning of the second word:',reDiffBegEnd.test('asdasda helloworld heysdfsdfs'));//f
-console.log('beginning of the first word:',reDiffBegEnd.test('heysdfsdfs dfsdfgshelloworld'));//f
-console.log('end of the last word:',reDiffBegEnd.test('hello heysdfsdfs dfsdfgshey world'));//t
+console.log('beginning of the first word:',reDiffBegEnd.test('helloworldasdasda hey sdfsdfs'));//f
+console.log('mid of the string:',reDiffBegEnd.test('asdasda helloworld heysdfsdfs'));//f
+console.log('end of the last word:',reDiffBegEnd.test('heysdfsdfs dfsdfgshelloworld'));//f
+console.log('outside of another text spaced:',reDiffBegEnd.test('hello heysdfsdfs dfsdfgshey world'));//t
