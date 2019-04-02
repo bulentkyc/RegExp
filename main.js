@@ -201,3 +201,86 @@ console.log('hey between text:',
 
 console.log('hi between text:',
     regExOr.test('fgsfgsdfhifxbxfbdf'));
+
+/* Meta characters
+\d matches any digit, equivalent to [0-9]
+\D matches any character that’s not a digit, equivalent to [^0-9]
+\w matches any alphanumeric character (plus underscore), equivalent to [A-Za-z_0-9]
+\W matches any non-alphanumeric character, anything except [^A-Za-z_0-9]
+\s matches any whitespace character: spaces, tabs, newlines and Unicode spaces
+\S matches any character that’s not a whitespace
+\0 matches null
+\n matches a newline character
+\t matches a tab character
+\uXXXX matches a unicode character with code XXXX (requires the u flag)
+. matches any character that is not a newline char (e.g. \n) (unless you use the s flag, explained later on)
+[^] matches any character, including newline characters. It’s useful on multiline strings
+*/
+
+// Sample for "\d" ([0-9])
+const quantify = /\d/; // same with /[0-9]/
+console.log('lower case letter: ',
+    quantify.test('b')); //f
+
+console.log('upper case letter: ',
+    quantify.test('H')); //f
+
+console.log('number: ',
+    quantify.test('1'));  //t
+
+//using +, *, {n} and {n,m}.
+const withoutPlus = /^\d$/;
+const withPlus = /^\d+$/; // empty is false
+const withStar = /^\d*$/; // empty is true
+
+console.log('number: ',
+    withoutPlus.test('12'));  //f
+
+console.log('number: ',
+    withPlus.test('12'));  //t
+
+console.log('number: ',
+    withStar.test('12'));  //t
+
+
+const reWithn = /^\d{3}$/; // looking for how many character there are
+
+console.log('number: ',
+    reWithn.test('12'));  //f
+
+console.log('number: ',
+    reWithn.test('111'));  //t
+
+console.log('number: ',
+    reWithn.test('abc'));  //f
+
+const reWithnMix = /^[A-Za-z0-9]{3}$/ 
+
+console.log('number: ',
+    reWithnMix.test('abc'));  //t
+
+const reWithnm = /^\d{3,5}$/
+
+console.log('number: ',
+    reWithnm.test('12'));  //f
+
+console.log('number: ',
+    reWithnm.test('111'));  //t
+
+console.log('number: ',
+    reWithnm.test('11341'));  //t
+
+console.log('number: ',
+    reWithnm.test('111344'));  //f
+
+//Optional items
+
+const reWithnmOpt = /^\d{3}\w?$/
+console.log('number: ',
+    reWithnmOpt.test('123'));  //t
+
+console.log('number: ',
+    reWithnmOpt.test('123a'));  //t
+
+console.log('number: ',
+    reWithnmOpt.test('123ab'));  //f
